@@ -9,6 +9,9 @@ module.exports = {
   ],
   "synchronize": true,
   "ssl": true,
+  "ssl": {
+    "rejectUnauthorized": false
+  },
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
