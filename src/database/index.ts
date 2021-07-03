@@ -1,4 +1,10 @@
 import { createConnection } from 'typeorm';
 
 
-createConnection();
+try {
+  createConnection();
+  console.log('Database connection established!');
+}
+catch (err) {
+  console.error(err);
+}
