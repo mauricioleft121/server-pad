@@ -12,7 +12,13 @@ class Product {
   descricao: string;
 
   @Column()
+  venda: string;
+
+  @Column()
   valor: number;
+
+  @Column()
+  valorKilo: number;
 
 }
 

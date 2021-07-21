@@ -7,11 +7,13 @@ interface Request {
   imagem: string;
   nome: string;
   descricao: string;
+  venda: string;
   valor: number;
+  valorKilo: number;
 }
 
 class CreateProductService {
-  public async execute({ imagem,nome,descricao,valor } : Request): Promise<Product | null > {
+  public async execute({ imagem,nome,descricao,venda,valor,valorKilo } : Request): Promise<Product | null > {
     const productsrepository = getCustomRepository(ProductsRepository);
 
     const findProduct = await productsrepository.findByName( nome );
@@ -26,7 +28,9 @@ class CreateProductService {
       imagem,
       nome,
       descricao,
-      valor
+      venda,
+      valor,
+      valorKilo,
     });
 
     await productsrepository.save(product);

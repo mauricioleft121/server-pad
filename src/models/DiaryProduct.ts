@@ -11,8 +11,14 @@ class DiaryProduct {
   @Column()
   descricao: string;
 
-  @Column({ type: "decimal" ,precision: 10, scale: 3 })
+  @Column()
+  venda: string;
+
+  @Column()
   valor: number;
+
+  @Column()
+  valorKilo: number;
 
 }
 

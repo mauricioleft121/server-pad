@@ -15,7 +15,7 @@ ProductsRouter.get('/', async (request, response) => {
 
 ProductsRouter.post('/', async (request,response) => {
   try {
-    const {imagem, nome, descricao, valor} = request.body;
+    const {imagem, nome, descricao,venda, valor,valorKilo} = request.body;
 
     const createProduct = new CreateProductService();
 
@@ -23,7 +23,9 @@ ProductsRouter.post('/', async (request,response) => {
       imagem: imagem,
       nome: nome,
       descricao: descricao,
-      valor: valor
+      venda: venda,
+      valor: valor,
+      valorKilo: valorKilo,
     });
 
     return response.json(product);

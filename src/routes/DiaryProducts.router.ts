@@ -20,11 +20,13 @@ DiaryProductsRouter.post('/', async (request,response) => {
     const createProduct = new AddDiaryProductService();
 
     for (let index = 0; index < itens.length; index++) {
-      const product = await createProduct.execute({
+       await createProduct.execute({
         imagem: itens[index].imagem,
         nome:itens[index].nome,
         descricao: itens[index].descricao,
-        valor: itens[index].valor
+        venda: itens[index].venda,
+        valor: itens[index].valor,
+        valorKilo: itens[index].valorKilo,
       });
     }
     const productsRepository = getCustomRepository(DiaryProductsRepository);
