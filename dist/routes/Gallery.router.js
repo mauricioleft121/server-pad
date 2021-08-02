@@ -41,42 +41,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = require("express");
 var typeorm_1 = require("typeorm");
-var CreateProductService_1 = __importDefault(require("../services/CreateProductService"));
-var ProductsRepository_1 = __importDefault(require("../repositories/ProductsRepository"));
-var DeleteProductService_1 = __importDefault(require("../services/DeleteProductService"));
-var ProductsRouter = express_1.Router();
-ProductsRouter.get('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var productsRepository, products;
+var CreateGalleryService_1 = __importDefault(require("../services/CreateGalleryService"));
+var GalleryRepositorie_1 = __importDefault(require("../repositories/GalleryRepositorie"));
+var DeleteGalleryService_1 = __importDefault(require("../services/DeleteGalleryService"));
+var GalleryRouter = express_1.Router();
+GalleryRouter.get('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+    var GalleryRepository, gallery;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                productsRepository = typeorm_1.getCustomRepository(ProductsRepository_1.default);
-                return [4 /*yield*/, productsRepository.find()];
+                GalleryRepository = typeorm_1.getCustomRepository(GalleryRepositorie_1.default);
+                return [4 /*yield*/, GalleryRepository.find()];
             case 1:
-                products = _a.sent();
-                return [2 /*return*/, response.json(products)];
+                gallery = _a.sent();
+                return [2 /*return*/, response.json(gallery)];
         }
     });
 }); });
-ProductsRouter.post('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, imagem, nome, descricao, venda, valor, valorKilo, createProduct, product, error_1;
+GalleryRouter.post('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, url, nome, createGallery, gallery, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
-                _a = request.body, imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
-                createProduct = new CreateProductService_1.default();
-                return [4 /*yield*/, createProduct.execute({
-                        imagem: imagem,
+                _a = request.body, url = _a.url, nome = _a.nome;
+                createGallery = new CreateGalleryService_1.default();
+                return [4 /*yield*/, createGallery.execute({
                         nome: nome,
-                        descricao: descricao,
-                        venda: venda,
-                        valor: valor,
-                        valorKilo: valorKilo,
+                        url: url,
                     })];
             case 1:
-                product = _b.sent();
-                return [2 /*return*/, response.json(product)];
+                gallery = _b.sent();
+                return [2 /*return*/, response.json(gallery)];
             case 2:
                 error_1 = _b.sent();
                 return [2 /*return*/, response.status(400).json({ error: error_1.message })];
@@ -84,20 +80,20 @@ ProductsRouter.post('/', function (request, response) { return __awaiter(void 0,
         }
     });
 }); });
-ProductsRouter.delete('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var nome, deleteProduc, err_1;
+GalleryRouter.delete('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+    var nome, deleteGallery, isdeleted, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 nome = request.body.nome;
-                deleteProduc = new DeleteProductService_1.default();
-                return [4 /*yield*/, deleteProduc.execute({
-                        nome: nome,
+                deleteGallery = new DeleteGalleryService_1.default();
+                return [4 /*yield*/, deleteGallery.execute({
+                        nome: nome
                     })];
             case 1:
-                _a.sent();
-                return [2 /*return*/, response.json({ sucess: "Produto deletado com sucesso!" })];
+                isdeleted = _a.sent();
+                return [2 /*return*/, response.json({ sucess: "Imagem Deletada com Sucesso" })];
             case 2:
                 err_1 = _a.sent();
                 return [2 /*return*/, response.status(400).json({ error: err_1.message })];
@@ -105,4 +101,4 @@ ProductsRouter.delete('/', function (request, response) { return __awaiter(void 
         }
     });
 }); });
-exports.default = ProductsRouter;
+exports.default = GalleryRouter;

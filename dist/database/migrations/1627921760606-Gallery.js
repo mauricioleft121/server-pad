@@ -36,23 +36,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateProduct1621884812109 = void 0;
+exports.Gallery1627921760606 = void 0;
 var typeorm_1 = require("typeorm");
-var CreateProduct1621884812109 = /** @class */ (function () {
-    function CreateProduct1621884812109() {
+var Gallery1627921760606 = /** @class */ (function () {
+    function Gallery1627921760606() {
     }
-    CreateProduct1621884812109.prototype.up = function (queryRunner) {
+    Gallery1627921760606.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, queryRunner.createTable(new typeorm_1.Table({
-                            name: 'products',
+                            name: 'gallery',
                             columns: [
-                                {
-                                    name: 'imagem',
-                                    type: 'varchar',
-                                    isNullable: false,
-                                },
                                 {
                                     name: 'nome',
                                     type: 'varchar',
@@ -60,29 +55,10 @@ var CreateProduct1621884812109 = /** @class */ (function () {
                                     isPrimary: true,
                                 },
                                 {
-                                    name: 'descricao',
+                                    name: 'url',
                                     type: 'varchar',
                                     isNullable: false,
-                                },
-                                {
-                                    name: 'venda',
-                                    type: 'varchar',
-                                    isNullable: false,
-                                },
-                                {
-                                    name: 'valor',
-                                    type: 'decimal',
-                                    isNullable: true,
-                                    precision: 10,
-                                    scale: 2,
-                                },
-                                {
-                                    name: 'valorKilo',
-                                    type: 'decimal',
-                                    isNullable: true,
-                                    precision: 10,
-                                    scale: 2,
-                                },
+                                }
                             ],
                         }))];
                     case 1:
@@ -92,11 +68,11 @@ var CreateProduct1621884812109 = /** @class */ (function () {
             });
         });
     };
-    CreateProduct1621884812109.prototype.down = function (queryRunner) {
+    Gallery1627921760606.prototype.down = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.dropTable('products')];
+                    case 0: return [4 /*yield*/, queryRunner.dropTable('gallery')];
                     case 1:
                         _a.sent();
                         return [2 /*return*/];
@@ -104,6 +80,6 @@ var CreateProduct1621884812109 = /** @class */ (function () {
             });
         });
     };
-    return CreateProduct1621884812109;
+    return Gallery1627921760606;
 }());
-exports.CreateProduct1621884812109 = CreateProduct1621884812109;
+exports.Gallery1627921760606 = Gallery1627921760606;

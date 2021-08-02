@@ -10,36 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var DiaryProduct = /** @class */ (function () {
-    function DiaryProduct() {
+var Gallery = /** @class */ (function () {
+    function Gallery() {
     }
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], DiaryProduct.prototype, "imagem", void 0);
     __decorate([
         typeorm_1.PrimaryColumn(),
         __metadata("design:type", String)
-    ], DiaryProduct.prototype, "nome", void 0);
+    ], Gallery.prototype, "nome", void 0);
     __decorate([
         typeorm_1.Column(),
         __metadata("design:type", String)
-    ], DiaryProduct.prototype, "descricao", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", String)
-    ], DiaryProduct.prototype, "venda", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", Number)
-    ], DiaryProduct.prototype, "valor", void 0);
-    __decorate([
-        typeorm_1.Column(),
-        __metadata("design:type", Number)
-    ], DiaryProduct.prototype, "valorKilo", void 0);
-    DiaryProduct = __decorate([
-        typeorm_1.Entity('diaryproducts')
-    ], DiaryProduct);
-    return DiaryProduct;
+    ], Gallery.prototype, "url", void 0);
+    Gallery = __decorate([
+        typeorm_1.Entity('gallery')
+    ], Gallery);
+    return Gallery;
 }());
-exports.default = DiaryProduct;
+exports.default = Gallery;

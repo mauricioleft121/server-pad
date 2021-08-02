@@ -45,7 +45,7 @@ var CreateProductService = /** @class */ (function () {
     function CreateProductService() {
     }
     CreateProductService.prototype.execute = function (_a) {
-        var imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, valor = _a.valor;
+        var imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
         return __awaiter(this, void 0, void 0, function () {
             var productsrepository, findProduct, product;
             return __generator(this, function (_b) {
@@ -62,7 +62,9 @@ var CreateProductService = /** @class */ (function () {
                             imagem: imagem,
                             nome: nome,
                             descricao: descricao,
-                            valor: valor
+                            venda: venda,
+                            valor: valor,
+                            valorKilo: valorKilo,
                         });
                         return [4 /*yield*/, productsrepository.save(product)];
                     case 2:

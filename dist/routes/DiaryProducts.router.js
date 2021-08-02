@@ -59,7 +59,7 @@ DiaryProductsRouter.get('/', function (request, response) { return __awaiter(voi
     });
 }); });
 DiaryProductsRouter.post('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var itens, createProduct, index, product, productsRepository, products, error_1;
+    var itens, createProduct, index, productsRepository, products, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -74,10 +74,12 @@ DiaryProductsRouter.post('/', function (request, response) { return __awaiter(vo
                         imagem: itens[index].imagem,
                         nome: itens[index].nome,
                         descricao: itens[index].descricao,
-                        valor: itens[index].valor
+                        venda: itens[index].venda,
+                        valor: itens[index].valor,
+                        valorKilo: itens[index].valorKilo,
                     })];
             case 2:
-                product = _a.sent();
+                _a.sent();
                 _a.label = 3;
             case 3:
                 index++;

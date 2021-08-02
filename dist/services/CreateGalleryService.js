@@ -40,40 +40,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var DiaryProductsRepository_1 = __importDefault(require("../repositories/DiaryProductsRepository"));
-var AddDiaryProductService = /** @class */ (function () {
-    function AddDiaryProductService() {
+var GalleryRepositorie_1 = __importDefault(require("../repositories/GalleryRepositorie"));
+var CreateGalleryService = /** @class */ (function () {
+    function CreateGalleryService() {
     }
-    AddDiaryProductService.prototype.execute = function (_a) {
-        var imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
+    CreateGalleryService.prototype.execute = function (_a) {
+        var url = _a.url, nome = _a.nome;
         return __awaiter(this, void 0, void 0, function () {
-            var productsrepository, findProduct, product;
+            var galleryrepository, findBanner, findBannerbyName, banner;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        productsrepository = typeorm_1.getCustomRepository(DiaryProductsRepository_1.default);
-                        return [4 /*yield*/, productsrepository.findByName(nome)];
+                        galleryrepository = typeorm_1.getCustomRepository(GalleryRepositorie_1.default);
+                        return [4 /*yield*/, galleryrepository.findOne(url)];
                     case 1:
-                        findProduct = _b.sent();
-                        if (findProduct) {
-                            throw Error('Esse produto já foi cadastrado');
-                        }
-                        product = productsrepository.create({
-                            imagem: imagem,
-                            nome: nome,
-                            descricao: descricao,
-                            venda: venda,
-                            valor: valor,
-                            valorKilo: valorKilo
-                        });
-                        return [4 /*yield*/, productsrepository.save(product)];
+                        findBanner = _b.sent();
+                        return [4 /*yield*/, galleryrepository.findByName(nome)];
                     case 2:
+                        findBannerbyName = _b.sent();
+                        if (findBanner) {
+                            throw Error('Essa Imagem já foi cadastrada!');
+                        }
+                        if (findBannerbyName) {
+                            throw Error('Essa Imagem já foi cadastrada!');
+                        }
+                        banner = galleryrepository.create({
+                            nome: nome,
+                            url: url,
+                        });
+                        return [4 /*yield*/, galleryrepository.save(banner)];
+                    case 3:
                         _b.sent();
-                        return [2 /*return*/, product];
+                        return [2 /*return*/, banner];
                 }
             });
         });
     };
-    return AddDiaryProductService;
+    return CreateGalleryService;
 }());
-exports.default = AddDiaryProductService;
+exports.default = CreateGalleryService;

@@ -1,4 +1,25 @@
 "use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -35,75 +56,35 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateProduct1621884812109 = void 0;
 var typeorm_1 = require("typeorm");
-var CreateProduct1621884812109 = /** @class */ (function () {
-    function CreateProduct1621884812109() {
+var Gallery_1 = __importDefault(require("../models/Gallery"));
+var GallerysRepository = /** @class */ (function (_super) {
+    __extends(GallerysRepository, _super);
+    function GallerysRepository() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    CreateProduct1621884812109.prototype.up = function (queryRunner) {
+    GallerysRepository.prototype.findByName = function (nome) {
         return __awaiter(this, void 0, void 0, function () {
+            var findGallery;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.createTable(new typeorm_1.Table({
-                            name: 'products',
-                            columns: [
-                                {
-                                    name: 'imagem',
-                                    type: 'varchar',
-                                    isNullable: false,
-                                },
-                                {
-                                    name: 'nome',
-                                    type: 'varchar',
-                                    isNullable: false,
-                                    isPrimary: true,
-                                },
-                                {
-                                    name: 'descricao',
-                                    type: 'varchar',
-                                    isNullable: false,
-                                },
-                                {
-                                    name: 'venda',
-                                    type: 'varchar',
-                                    isNullable: false,
-                                },
-                                {
-                                    name: 'valor',
-                                    type: 'decimal',
-                                    isNullable: true,
-                                    precision: 10,
-                                    scale: 2,
-                                },
-                                {
-                                    name: 'valorKilo',
-                                    type: 'decimal',
-                                    isNullable: true,
-                                    precision: 10,
-                                    scale: 2,
-                                },
-                            ],
-                        }))];
+                    case 0: return [4 /*yield*/, this.findOne({
+                            where: { nome: nome },
+                        })];
                     case 1:
-                        _a.sent();
-                        return [2 /*return*/];
+                        findGallery = _a.sent();
+                        return [2 /*return*/, findGallery || null];
                 }
             });
         });
     };
-    CreateProduct1621884812109.prototype.down = function (queryRunner) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, queryRunner.dropTable('products')];
-                    case 1:
-                        _a.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    return CreateProduct1621884812109;
-}());
-exports.CreateProduct1621884812109 = CreateProduct1621884812109;
+    GallerysRepository = __decorate([
+        typeorm_1.EntityRepository(Gallery_1.default)
+    ], GallerysRepository);
+    return GallerysRepository;
+}(typeorm_1.Repository));
+exports.default = GallerysRepository;

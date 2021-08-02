@@ -40,40 +40,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var DiaryProductsRepository_1 = __importDefault(require("../repositories/DiaryProductsRepository"));
-var AddDiaryProductService = /** @class */ (function () {
-    function AddDiaryProductService() {
+var GalleryRepositorie_1 = __importDefault(require("../repositories/GalleryRepositorie"));
+var DeleteGalleryService = /** @class */ (function () {
+    function DeleteGalleryService() {
     }
-    AddDiaryProductService.prototype.execute = function (_a) {
-        var imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
+    DeleteGalleryService.prototype.execute = function (_a) {
+        var nome = _a.nome;
         return __awaiter(this, void 0, void 0, function () {
-            var productsrepository, findProduct, product;
+            var galleryrepository, findBannerbyName;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        productsrepository = typeorm_1.getCustomRepository(DiaryProductsRepository_1.default);
-                        return [4 /*yield*/, productsrepository.findByName(nome)];
+                        galleryrepository = typeorm_1.getCustomRepository(GalleryRepositorie_1.default);
+                        return [4 /*yield*/, galleryrepository.findByName(nome)];
                     case 1:
-                        findProduct = _b.sent();
-                        if (findProduct) {
-                            throw Error('Esse produto já foi cadastrado');
+                        findBannerbyName = _b.sent();
+                        if (!findBannerbyName) {
+                            throw Error('Essa Imagem não existe');
                         }
-                        product = productsrepository.create({
-                            imagem: imagem,
-                            nome: nome,
-                            descricao: descricao,
-                            venda: venda,
-                            valor: valor,
-                            valorKilo: valorKilo
+                        galleryrepository.delete({
+                            nome: nome
                         });
-                        return [4 /*yield*/, productsrepository.save(product)];
-                    case 2:
-                        _b.sent();
-                        return [2 /*return*/, product];
+                        return [2 /*return*/, true];
                 }
             });
         });
     };
-    return AddDiaryProductService;
+    return DeleteGalleryService;
 }());
-exports.default = AddDiaryProductService;
+exports.default = DeleteGalleryService;

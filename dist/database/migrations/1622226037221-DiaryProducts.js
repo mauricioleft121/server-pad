@@ -65,9 +65,21 @@ var DiaryProducts1622226037221 = /** @class */ (function () {
                                     isNullable: false,
                                 },
                                 {
+                                    name: 'venda',
+                                    type: 'varchar',
+                                    isNullable: false,
+                                },
+                                {
                                     name: 'valor',
                                     type: 'decimal',
-                                    isNullable: false,
+                                    isNullable: true,
+                                    precision: 10,
+                                    scale: 2,
+                                },
+                                {
+                                    name: 'valorKilo',
+                                    type: 'decimal',
+                                    isNullable: true,
                                     precision: 10,
                                     scale: 2,
                                 }
