@@ -7,10 +7,12 @@ import routes from './routes';
 
 import './database';
 
-
+var corsOptions = {
+  origin: 'https://panificadoraubaense.com.br/',
+}
 const app = express();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(routes);

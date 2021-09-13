@@ -1,4 +1,4 @@
-import { response, Router } from 'express';
+import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
 import CreateProductService from '../services/CreateProductService';
 import ProductsRepository from '../repositories/ProductsRepository';
@@ -30,7 +30,7 @@ ProductsRouter.post('/', async (request,response) => {
 
     return response.json(product);
 
-  } catch (error) {
+  } catch (error: any) {
     
     return response.status(400).json({error: error.message});
     
@@ -49,7 +49,7 @@ ProductsRouter.delete('/', async (request,response) => {
 
     return response.json({sucess: "Produto deletado com sucesso!"})
     
-  } catch (err) {
+  } catch (err: any) {
     return response.status(400).json({error: err.message});
   }
 })

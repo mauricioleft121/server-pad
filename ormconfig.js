@@ -1,4 +1,4 @@
-/*module.exports = {
+/*<m />odule.exports = {
   "type": "postgres",
   "url" : process.env.DATABASE_URL,
   "entities": [
@@ -12,6 +12,7 @@
   }
 }
 */
+
 
 module.exports = {
   "type": "postgres",

@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import ProductsRouter from './Products.router';
-import BannerRouter from './Banner.router';
-import DiaryProductsRouter from './DiaryProducts.router';
-import GalleryRouter from './Gallery.router';
+import ProductsRouter from './Products.routes';
+import BannerRouter from './Banner.routes';
+import DiaryProductsRouter from './DiaryProducts.routes';
+import GalleryRouter from './Gallery.routes';
 
 const routes = Router();
 

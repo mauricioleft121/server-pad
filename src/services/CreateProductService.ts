@@ -4,7 +4,7 @@ import Product from '../models/Product';
 import ProductsRepository from '../repositories/ProductsRepository';
 
 interface Request {
-  imagem: string;
+  imagem: string | undefined;
   nome: string;
   descricao: string;
   venda: string;
