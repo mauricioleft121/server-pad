@@ -7,8 +7,10 @@ import routes from './routes';
 
 import './database';
 
+const whitelist = ['https://panificadoraubaense.com.br', 'http://138.59.217.7' ]
+
 var corsOptions = {
-  origin: 'https://panificadoraubaense.com.br/',
+  origin: whitelist,
 }
 const app = express();
 

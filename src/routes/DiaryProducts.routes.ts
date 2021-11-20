@@ -34,7 +34,7 @@ DiaryProductsRouter.post('/', async (request,response) => {
 
     return response.json(products);
 
-  } catch (error) {
+  } catch (error: any) {
     
     return response.status(400).json({error: error.message});
     
@@ -49,7 +49,7 @@ DiaryProductsRouter.delete('/', async (request,response) => {
 
     return response.json({sucess: "Tabela Limpa com Sucesso!"})
     
-  } catch (err) {
+  } catch (err: any) {
     return response.status(400).json({error: err.message});
   }
 })

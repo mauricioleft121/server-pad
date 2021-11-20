@@ -26,7 +26,7 @@ BannerRouter.post('/', async (request,response) => {
 
     return response.json(banner);
 
-  } catch (error) {
+  } catch (error : any) {
     
     return response.status(400).json({error: error.message});
     
@@ -45,7 +45,7 @@ BannerRouter.delete('/', async (request,response) => {
 
     return response.json({sucess: "Imagem Deletada com Sucesso"})
     
-  } catch (err) {
+  } catch (err : any) {
     return response.status(400).json({error: err.message});
   }
 })

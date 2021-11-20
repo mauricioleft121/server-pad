@@ -1,4 +1,4 @@
-/*<m />odule.exports = {
+/* module.exports = {
   "type": "postgres",
   "url" : process.env.DATABASE_URL,
   "entities": [
@@ -11,8 +11,7 @@
     "migrationsDir": "./src/database/migrations"
   }
 }
-*/
-
+ */
 
 module.exports = {
   "type": "postgres",
