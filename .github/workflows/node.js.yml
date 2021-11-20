@@ -34,7 +34,6 @@ jobs:
     
     - name: Stop pm2
       run: pm2 stop panificadora-ubaense
-      if: ${{failure()}}
       
     - name: Start pm2
       run: pm2 start dist/server.js --name panificadora-ubaense
