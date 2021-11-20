@@ -1,4 +1,4 @@
-module.exports = {
+/* module.exports = {
   "type": "postgres",
   "url" : process.env.DATABASE_URL,
   "entities": [
@@ -11,9 +11,9 @@ module.exports = {
     "migrationsDir": "./src/database/migrations"
   }
 }
+ */
 
-
-/* module.exports = {
+module.exports = {
   "type": "postgres",
   "url" : process.env.DATABASE_URL,
   "entities": [
@@ -26,4 +26,4 @@ module.exports = {
     "migrationsDir": "./src/database/migrations"
   }
 }
- */
+
