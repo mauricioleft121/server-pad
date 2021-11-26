@@ -31,6 +31,14 @@ jobs:
       
     - name: Build project
       run: yarn build
+      
+    - name: Create env file
+      run: |
+          cat << EOF > .env
+          DATABASE_URL = postgres://panificadoraubaense:caveira147.com@localhost:14762/panificadoraubaense
+          PORT=3333
+          NODE_ENV=development
+          EOF
     
     - name: Stop pm2
       run: pm2 stop panificadora-ubaense
