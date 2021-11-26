@@ -15,20 +15,19 @@ DiaryProductsRouter.get('/', async (request, response) => {
 
 DiaryProductsRouter.post('/', async (request,response) => {
   try {
-    const {itens} = request.body;
+    const { imagem, nome, descricao, venda, valor, valorKilo } = request.body;
 
     const createProduct = new AddDiaryProductService();
 
-    for (let index = 0; index < itens.length; index++) {
        await createProduct.execute({
-        imagem: itens[index].imagem,
-        nome:itens[index].nome,
-        descricao: itens[index].descricao,
-        venda: itens[index].venda,
-        valor: itens[index].valor,
-        valorKilo: itens[index].valorKilo,
+        imagem: imagem,
+        nome: nome,
+        descricao: descricao,
+        venda: venda,
+        valor: valor,
+        valorKilo: valorKilo,
       });
-    }
+
     const productsRepository = getCustomRepository(DiaryProductsRepository);
     const products = await productsRepository.find();
 
@@ -43,11 +42,18 @@ DiaryProductsRouter.post('/', async (request,response) => {
 
 DiaryProductsRouter.delete('/', async (request,response) => {
   try {
+
+    const { nome } = request.body;
+
     const deleteProduc = new RemoveDiaryProductService();
 
-   await deleteProduc.execute();
+   await deleteProduc.execute(
+     {
+       nome: nome,
+     }
+   );
 
-    return response.json({sucess: "Tabela Limpa com Sucesso!"})
+    return response.json({sucess: "Produto deletado com sucesso!"})
     
   } catch (err: any) {
     return response.status(400).json({error: err.message});
