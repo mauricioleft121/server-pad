@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { getCustomRepository } from 'typeorm';
 import CreateProductService from '../services/CreateProductService';
 import ProductsRepository from '../repositories/ProductsRepository';
+import EditProductService from '../services/EditProductService';
 import DeleteProductService from '../services/DeleteProductService';
 
 const ProductsRouter = Router();
@@ -50,6 +51,28 @@ ProductsRouter.delete('/', async (request,response) => {
     return response.json({sucess: "Produto deletado com sucesso!"})
     
   } catch (err: any) {
+    return response.status(400).json({error: err.message});
+  }
+})
+
+ProductsRouter.patch('/', async (request,response) => {
+  try {
+    const {imagem, nome, descricao,venda, valor,valorKilo} = request.body;
+
+    const editProd = new EditProductService();
+
+    const product = await editProd.execute({
+      imagem: imagem,
+      nome: nome,
+      descricao: descricao,
+      venda: venda,
+      valor: valor,
+      valorKilo: valorKilo,
+    });
+
+    return response.json(product);
+  }
+  catch(err: any) {
     return response.status(400).json({error: err.message});
   }
 })

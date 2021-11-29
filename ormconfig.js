@@ -10,8 +10,8 @@
   "cli": {
     "migrationsDir": "./src/database/migrations"
   }
-} */
-
+}
+ */
 
 module.exports = {
   "type": "postgres",
