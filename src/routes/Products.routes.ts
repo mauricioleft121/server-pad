@@ -73,6 +73,7 @@ ProductsRouter.patch('/', async (request,response) => {
     return response.json(product);
   }
   catch(err: any) {
+    console.log(err.message);
     return response.status(400).json({error: err.message});
   }
 })

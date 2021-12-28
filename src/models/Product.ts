@@ -3,6 +3,9 @@ import { Entity, Column, PrimaryColumn } from 'typeorm';
 @Entity('products')
 class Product {
   @Column()
+  id: string;
+
+  @Column()
   imagem: string;
 
   @PrimaryColumn()
@@ -19,6 +22,7 @@ class Product {
 
   @Column()
   valorKilo: number;
+
 
 }
 
