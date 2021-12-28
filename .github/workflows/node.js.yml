@@ -28,6 +28,9 @@ jobs:
         
     - name: Install dependencies
       run: yarn
+    
+    - name: Execute Migrations
+      run: yarn typeorm migration:run
       
     - name: Build project
       run: yarn build
