@@ -57,11 +57,12 @@ ProductsRouter.delete('/', async (request,response) => {
 
 ProductsRouter.patch('/', async (request,response) => {
   try {
-    const {imagem, nome, descricao,venda, valor,valorKilo} = request.body;
+    const {id,imagem, nome, descricao,venda, valor,valorKilo} = request.body;
 
     const editProd = new EditProductService();
 
     const product = await editProd.execute({
+      id: id,
       imagem: imagem,
       nome: nome,
       descricao: descricao,

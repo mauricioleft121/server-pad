@@ -5,6 +5,7 @@ import ProductsRepository from '../repositories/ProductsRepository';
 
 interface Request {
   imagem: string | undefined;
+  id: string;
   nome: string;
   descricao: string;
   venda: string;
@@ -13,13 +14,13 @@ interface Request {
 }
 
 class EditProductService {
-  public async execute({ imagem,nome,descricao,venda,valor,valorKilo } : Request): Promise<Product | null > {
+  public async execute({ id,imagem,nome,descricao,venda,valor,valorKilo } : Request): Promise<Product | null > {
     const productsrepository = getCustomRepository(ProductsRepository);
 
-    const findProduct = await productsrepository.findByName( nome );
+    const findProduct = await productsrepository.findById( id );
 
     if(findProduct) {
-      await productsrepository.update({ nome: nome},
+      await productsrepository.update({ id: id },
         {
           imagem: imagem,
           nome: nome,
