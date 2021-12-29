@@ -30,7 +30,7 @@ class EditProductService {
           valorKilo: valorKilo,
         });
 
-      const productupdate = await productsrepository.findByName( nome );
+      const productupdate = await productsrepository.findById( id );
       return productupdate;
   
     }
