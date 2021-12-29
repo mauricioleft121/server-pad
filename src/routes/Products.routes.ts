@@ -16,11 +16,12 @@ ProductsRouter.get('/', async (request, response) => {
 
 ProductsRouter.post('/', async (request,response) => {
   try {
-    const {imagem, nome, descricao,venda, valor,valorKilo} = request.body;
+    const {id , imagem, nome, descricao,venda, valor,valorKilo} = request.body;
 
     const createProduct = new CreateProductService();
 
     const product = await createProduct.execute({
+      id: id,
       imagem: imagem,
       nome: nome,
       descricao: descricao,

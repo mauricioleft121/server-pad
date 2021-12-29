@@ -4,6 +4,7 @@ import Product from '../models/Product';
 import ProductsRepository from '../repositories/ProductsRepository';
 
 interface Request {
+  id: string;
   imagem: string | undefined;
   nome: string;
   descricao: string;
@@ -13,7 +14,7 @@ interface Request {
 }
 
 class CreateProductService {
-  public async execute({ imagem,nome,descricao,venda,valor,valorKilo } : Request): Promise<Product | null > {
+  public async execute({ id,imagem,nome,descricao,venda,valor,valorKilo } : Request): Promise<Product | null > {
     const productsrepository = getCustomRepository(ProductsRepository);
 
     const findProduct = await productsrepository.findByName( nome );
@@ -25,6 +26,7 @@ class CreateProductService {
 
 
     const product = productsrepository.create({
+      id,
       imagem,
       nome,
       descricao,
