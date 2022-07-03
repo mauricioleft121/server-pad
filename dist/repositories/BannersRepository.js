@@ -83,7 +83,7 @@ var BannersRepository = /** @class */ (function (_super) {
         });
     };
     BannersRepository = __decorate([
-        typeorm_1.EntityRepository(Banner_1.default)
+        (0, typeorm_1.EntityRepository)(Banner_1.default)
     ], BannersRepository);
     return BannersRepository;
 }(typeorm_1.Repository));

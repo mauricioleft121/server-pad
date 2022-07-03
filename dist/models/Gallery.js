@@ -14,15 +14,15 @@ var Gallery = /** @class */ (function () {
     function Gallery() {
     }
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        (0, typeorm_1.PrimaryColumn)(),
         __metadata("design:type", String)
     ], Gallery.prototype, "nome", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], Gallery.prototype, "url", void 0);
     Gallery = __decorate([
-        typeorm_1.Entity('gallery')
+        (0, typeorm_1.Entity)('gallery')
     ], Gallery);
     return Gallery;
 }());

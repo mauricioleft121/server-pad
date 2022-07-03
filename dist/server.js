@@ -9,11 +9,12 @@ var express_1 = __importDefault(require("express"));
 var cors_1 = __importDefault(require("cors"));
 var routes_1 = __importDefault(require("./routes"));
 require("./database");
+var whitelist = ['https://panificadoraubaense.com.br', 'http://138.59.217.17'];
 var corsOptions = {
-    origin: 'https://panificadoraubaense.com.br/',
+    origin: whitelist,
 };
-var app = express_1.default();
-app.use(cors_1.default(corsOptions));
+var app = (0, express_1.default)();
+app.use((0, cors_1.default)(corsOptions));
 app.use(express_1.default.json());
 app.use(routes_1.default);
 dotenv_1.default.config();

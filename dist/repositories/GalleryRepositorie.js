@@ -83,7 +83,7 @@ var GallerysRepository = /** @class */ (function (_super) {
         });
     };
     GallerysRepository = __decorate([
-        typeorm_1.EntityRepository(Gallery_1.default)
+        (0, typeorm_1.EntityRepository)(Gallery_1.default)
     ], GallerysRepository);
     return GallerysRepository;
 }(typeorm_1.Repository));

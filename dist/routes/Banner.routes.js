@@ -44,13 +44,13 @@ var typeorm_1 = require("typeorm");
 var CreateBannerService_1 = __importDefault(require("../services/CreateBannerService"));
 var BannersRepository_1 = __importDefault(require("../repositories/BannersRepository"));
 var DeleteBannerService_1 = __importDefault(require("../services/DeleteBannerService"));
-var BannerRouter = express_1.Router();
+var BannerRouter = (0, express_1.Router)();
 BannerRouter.get('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var BannerRepository, banners;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                BannerRepository = typeorm_1.getCustomRepository(BannersRepository_1.default);
+                BannerRepository = (0, typeorm_1.getCustomRepository)(BannersRepository_1.default);
                 return [4 /*yield*/, BannerRepository.find()];
             case 1:
                 banners = _a.sent();

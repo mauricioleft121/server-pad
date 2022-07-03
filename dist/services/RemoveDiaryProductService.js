@@ -44,17 +44,26 @@ var DiaryProductsRepository_1 = __importDefault(require("../repositories/DiaryPr
 var RemoveDiaryProductService = /** @class */ (function () {
     function RemoveDiaryProductService() {
     }
-    RemoveDiaryProductService.prototype.execute = function () {
+    RemoveDiaryProductService.prototype.execute = function (_a) {
+        var nome = _a.nome;
         return __awaiter(this, void 0, void 0, function () {
-            var DiaryProducts;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var productsrepository, findProduct;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        DiaryProducts = typeorm_1.getCustomRepository(DiaryProductsRepository_1.default);
-                        return [4 /*yield*/, DiaryProducts.clear()];
+                        productsrepository = (0, typeorm_1.getCustomRepository)(DiaryProductsRepository_1.default);
+                        return [4 /*yield*/, productsrepository.findByName(nome)];
                     case 1:
-                        _a.sent();
-                        return [2 /*return*/];
+                        findProduct = _b.sent();
+                        if (!findProduct) {
+                            throw Error('Esse produto não existe');
+                        }
+                        return [4 /*yield*/, productsrepository.delete({
+                                nome: nome
+                            })];
+                    case 2:
+                        _b.sent();
+                        return [2 /*return*/, null];
                 }
             });
         });

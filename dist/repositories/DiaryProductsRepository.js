@@ -83,7 +83,7 @@ var DiaryProducts = /** @class */ (function (_super) {
         });
     };
     DiaryProducts = __decorate([
-        typeorm_1.EntityRepository(DiaryProduct_1.default)
+        (0, typeorm_1.EntityRepository)(DiaryProduct_1.default)
     ], DiaryProducts);
     return DiaryProducts;
 }(typeorm_1.Repository));

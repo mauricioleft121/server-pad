@@ -44,13 +44,13 @@ var typeorm_1 = require("typeorm");
 var AddDiaryProductService_1 = __importDefault(require("../services/AddDiaryProductService"));
 var DiaryProductsRepository_1 = __importDefault(require("../repositories/DiaryProductsRepository"));
 var RemoveDiaryProductService_1 = __importDefault(require("../services/RemoveDiaryProductService"));
-var DiaryProductsRouter = express_1.Router();
+var DiaryProductsRouter = (0, express_1.Router)();
 DiaryProductsRouter.get('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var productsRepository, products;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                productsRepository = typeorm_1.getCustomRepository(DiaryProductsRepository_1.default);
+                productsRepository = (0, typeorm_1.getCustomRepository)(DiaryProductsRepository_1.default);
                 return [4 /*yield*/, productsRepository.find()];
             case 1:
                 products = _a.sent();
@@ -59,55 +59,49 @@ DiaryProductsRouter.get('/', function (request, response) { return __awaiter(voi
     });
 }); });
 DiaryProductsRouter.post('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var itens, createProduct, index, productsRepository, products, error_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a, imagem, nome, descricao, venda, valor, valorKilo, createProduct, productsRepository, products, error_1;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
-                _a.trys.push([0, 6, , 7]);
-                itens = request.body.itens;
+                _b.trys.push([0, 3, , 4]);
+                _a = request.body, imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
                 createProduct = new AddDiaryProductService_1.default();
-                index = 0;
-                _a.label = 1;
-            case 1:
-                if (!(index < itens.length)) return [3 /*break*/, 4];
                 return [4 /*yield*/, createProduct.execute({
-                        imagem: itens[index].imagem,
-                        nome: itens[index].nome,
-                        descricao: itens[index].descricao,
-                        venda: itens[index].venda,
-                        valor: itens[index].valor,
-                        valorKilo: itens[index].valorKilo,
+                        imagem: imagem,
+                        nome: nome,
+                        descricao: descricao,
+                        venda: venda,
+                        valor: valor,
+                        valorKilo: valorKilo,
                     })];
-            case 2:
-                _a.sent();
-                _a.label = 3;
-            case 3:
-                index++;
-                return [3 /*break*/, 1];
-            case 4:
-                productsRepository = typeorm_1.getCustomRepository(DiaryProductsRepository_1.default);
+            case 1:
+                _b.sent();
+                productsRepository = (0, typeorm_1.getCustomRepository)(DiaryProductsRepository_1.default);
                 return [4 /*yield*/, productsRepository.find()];
-            case 5:
-                products = _a.sent();
+            case 2:
+                products = _b.sent();
                 return [2 /*return*/, response.json(products)];
-            case 6:
-                error_1 = _a.sent();
+            case 3:
+                error_1 = _b.sent();
                 return [2 /*return*/, response.status(400).json({ error: error_1.message })];
-            case 7: return [2 /*return*/];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
 DiaryProductsRouter.delete('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var deleteProduc, err_1;
+    var nome, deleteProduc, err_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
+                nome = request.body.nome;
                 deleteProduc = new RemoveDiaryProductService_1.default();
-                return [4 /*yield*/, deleteProduc.execute()];
+                return [4 /*yield*/, deleteProduc.execute({
+                        nome: nome,
+                    })];
             case 1:
                 _a.sent();
-                return [2 /*return*/, response.json({ sucess: "Tabela Limpa com Sucesso!" })];
+                return [2 /*return*/, response.json({ sucess: "Produto deletado com sucesso!" })];
             case 2:
                 err_1 = _a.sent();
                 return [2 /*return*/, response.status(400).json({ error: err_1.message })];

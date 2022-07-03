@@ -44,13 +44,13 @@ var typeorm_1 = require("typeorm");
 var CreateGalleryService_1 = __importDefault(require("../services/CreateGalleryService"));
 var GalleryRepositorie_1 = __importDefault(require("../repositories/GalleryRepositorie"));
 var DeleteGalleryService_1 = __importDefault(require("../services/DeleteGalleryService"));
-var GalleryRouter = express_1.Router();
+var GalleryRouter = (0, express_1.Router)();
 GalleryRouter.get('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var GalleryRepository, gallery;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                GalleryRepository = typeorm_1.getCustomRepository(GalleryRepositorie_1.default);
+                GalleryRepository = (0, typeorm_1.getCustomRepository)(GalleryRepositorie_1.default);
                 return [4 /*yield*/, GalleryRepository.find()];
             case 1:
                 gallery = _a.sent();

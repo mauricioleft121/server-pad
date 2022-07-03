@@ -2,6 +2,7 @@ import { getCustomRepository } from 'typeorm';
 
 import Product from '../models/Product';
 import ProductsRepository from '../repositories/ProductsRepository';
+import DiaryProductsRepository from '../repositories/DiaryProductsRepository';
 
 interface Request {
   imagem: string | undefined;
@@ -14,10 +15,12 @@ interface Request {
 }
 
 class EditProductService {
-  public async execute({ id,imagem,nome,descricao,venda,valor,valorKilo } : Request): Promise<Product | null > {
+  public async execute({ id,imagem,nome,descricao,venda,valor,valorKilo } : Request): Promise<Boolean | null > {
     const productsrepository = getCustomRepository(ProductsRepository);
+    const diaryproductrepository = getCustomRepository(DiaryProductsRepository);
 
     const findProduct = await productsrepository.findById( id );
+    const findDiaryProduct = await diaryproductrepository.findByName ( nome );
 
     if(findProduct) {
       await productsrepository.update({ id: id },
@@ -29,9 +32,18 @@ class EditProductService {
           valor: valor,
           valorKilo: valorKilo,
         });
+        if(findDiaryProduct) {
+          await diaryproductrepository.update({ nome: nome}, {
+            imagem: imagem,
+            nome: nome,
+            descricao: descricao,
+            venda: venda,
+            valor: valor,
+            valorKilo: valorKilo,
+          })
 
-      const productupdate = await productsrepository.findById( id );
-      return productupdate;
+        }
+      return true;
   
     }
     else {

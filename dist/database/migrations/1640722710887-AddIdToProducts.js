@@ -35,46 +35,45 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AddIdToProducts1640722710887 = void 0;
 var typeorm_1 = require("typeorm");
-var ProductsRepository_1 = __importDefault(require("../repositories/ProductsRepository"));
-var CreateProductService = /** @class */ (function () {
-    function CreateProductService() {
+var AddIdToProducts1640722710887 = /** @class */ (function () {
+    function AddIdToProducts1640722710887() {
     }
-    CreateProductService.prototype.execute = function (_a) {
-        var id = _a.id, imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
+    AddIdToProducts1640722710887.prototype.up = function (queryRunner) {
         return __awaiter(this, void 0, void 0, function () {
-            var productsrepository, findProduct, product;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        productsrepository = (0, typeorm_1.getCustomRepository)(ProductsRepository_1.default);
-                        return [4 /*yield*/, productsrepository.findByName(nome)];
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, queryRunner.query("CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"")];
                     case 1:
-                        findProduct = _b.sent();
-                        if (findProduct) {
-                            throw Error('Esse produto já foi cadastrado');
-                        }
-                        product = productsrepository.create({
-                            id: id,
-                            imagem: imagem,
-                            nome: nome,
-                            descricao: descricao,
-                            venda: venda,
-                            valor: valor,
-                            valorKilo: valorKilo,
-                        });
-                        return [4 /*yield*/, productsrepository.save(product)];
+                        _a.sent();
+                        return [4 /*yield*/, queryRunner.addColumn('products', new typeorm_1.TableColumn({
+                                name: 'id',
+                                type: 'varchar',
+                                generationStrategy: 'uuid',
+                                isNullable: true,
+                                default: "uuid_generate_v4()"
+                            }))];
                     case 2:
-                        _b.sent();
-                        return [2 /*return*/, product];
+                        _a.sent();
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    return CreateProductService;
+    AddIdToProducts1640722710887.prototype.down = function (queryRunner) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, queryRunner.dropColumn('products', 'id')];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    return AddIdToProducts1640722710887;
 }());
-exports.default = CreateProductService;
+exports.AddIdToProducts1640722710887 = AddIdToProducts1640722710887;

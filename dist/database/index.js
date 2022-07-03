@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
 try {
-    typeorm_1.createConnection();
+    (0, typeorm_1.createConnection)();
     console.log('Database connection established!');
 }
 catch (err) {

@@ -51,7 +51,7 @@ var DeleteGalleryService = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        galleryrepository = typeorm_1.getCustomRepository(GalleryRepositorie_1.default);
+                        galleryrepository = (0, typeorm_1.getCustomRepository)(GalleryRepositorie_1.default);
                         return [4 /*yield*/, galleryrepository.findByName(nome)];
                     case 1:
                         findBannerbyName = _b.sent();

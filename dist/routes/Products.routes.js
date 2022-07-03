@@ -43,14 +43,15 @@ var express_1 = require("express");
 var typeorm_1 = require("typeorm");
 var CreateProductService_1 = __importDefault(require("../services/CreateProductService"));
 var ProductsRepository_1 = __importDefault(require("../repositories/ProductsRepository"));
+var EditProductService_1 = __importDefault(require("../services/EditProductService"));
 var DeleteProductService_1 = __importDefault(require("../services/DeleteProductService"));
-var ProductsRouter = express_1.Router();
+var ProductsRouter = (0, express_1.Router)();
 ProductsRouter.get('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
     var productsRepository, products;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                productsRepository = typeorm_1.getCustomRepository(ProductsRepository_1.default);
+                productsRepository = (0, typeorm_1.getCustomRepository)(ProductsRepository_1.default);
                 return [4 /*yield*/, productsRepository.find()];
             case 1:
                 products = _a.sent();
@@ -59,14 +60,15 @@ ProductsRouter.get('/', function (request, response) { return __awaiter(void 0, 
     });
 }); });
 ProductsRouter.post('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, imagem, nome, descricao, venda, valor, valorKilo, createProduct, product, error_1;
+    var _a, id, imagem, nome, descricao, venda, valor, valorKilo, createProduct, product, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
-                _a = request.body, imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
+                _a = request.body, id = _a.id, imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
                 createProduct = new CreateProductService_1.default();
                 return [4 /*yield*/, createProduct.execute({
+                        id: id,
                         imagem: imagem,
                         nome: nome,
                         descricao: descricao,
@@ -101,6 +103,34 @@ ProductsRouter.delete('/', function (request, response) { return __awaiter(void 
             case 2:
                 err_1 = _a.sent();
                 return [2 /*return*/, response.status(400).json({ error: err_1.message })];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+ProductsRouter.patch('/', function (request, response) { return __awaiter(void 0, void 0, void 0, function () {
+    var _a, id, imagem, nome, descricao, venda, valor, valorKilo, editProd, product, err_2;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                _b.trys.push([0, 2, , 3]);
+                _a = request.body, id = _a.id, imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
+                editProd = new EditProductService_1.default();
+                return [4 /*yield*/, editProd.execute({
+                        id: id,
+                        imagem: imagem,
+                        nome: nome,
+                        descricao: descricao,
+                        venda: venda,
+                        valor: valor,
+                        valorKilo: valorKilo,
+                    })];
+            case 1:
+                product = _b.sent();
+                return [2 /*return*/, response.json(product)];
+            case 2:
+                err_2 = _b.sent();
+                console.log(err_2.message);
+                return [2 /*return*/, response.status(400).json({ error: err_2.message })];
             case 3: return [2 /*return*/];
         }
     });

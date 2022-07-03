@@ -51,7 +51,7 @@ var DeleteProductService = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        productsrepository = typeorm_1.getCustomRepository(ProductsRepository_1.default);
+                        productsrepository = (0, typeorm_1.getCustomRepository)(ProductsRepository_1.default);
                         return [4 /*yield*/, productsrepository.findByName(nome)];
                     case 1:
                         findProduct = _b.sent();

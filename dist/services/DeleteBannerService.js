@@ -51,7 +51,7 @@ var DeleteBannerService = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        bannersrepository = typeorm_1.getCustomRepository(BannersRepository_1.default);
+                        bannersrepository = (0, typeorm_1.getCustomRepository)(BannersRepository_1.default);
                         return [4 /*yield*/, bannersrepository.findByName(nome)];
                     case 1:
                         findBannerbyName = _b.sent();

@@ -41,40 +41,54 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
 var ProductsRepository_1 = __importDefault(require("../repositories/ProductsRepository"));
-var CreateProductService = /** @class */ (function () {
-    function CreateProductService() {
+var DiaryProductsRepository_1 = __importDefault(require("../repositories/DiaryProductsRepository"));
+var EditProductService = /** @class */ (function () {
+    function EditProductService() {
     }
-    CreateProductService.prototype.execute = function (_a) {
+    EditProductService.prototype.execute = function (_a) {
         var id = _a.id, imagem = _a.imagem, nome = _a.nome, descricao = _a.descricao, venda = _a.venda, valor = _a.valor, valorKilo = _a.valorKilo;
         return __awaiter(this, void 0, void 0, function () {
-            var productsrepository, findProduct, product;
+            var productsrepository, diaryproductrepository, findProduct, findDiaryProduct;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         productsrepository = (0, typeorm_1.getCustomRepository)(ProductsRepository_1.default);
-                        return [4 /*yield*/, productsrepository.findByName(nome)];
+                        diaryproductrepository = (0, typeorm_1.getCustomRepository)(DiaryProductsRepository_1.default);
+                        return [4 /*yield*/, productsrepository.findById(id)];
                     case 1:
                         findProduct = _b.sent();
-                        if (findProduct) {
-                            throw Error('Esse produto já foi cadastrado');
-                        }
-                        product = productsrepository.create({
-                            id: id,
-                            imagem: imagem,
-                            nome: nome,
-                            descricao: descricao,
-                            venda: venda,
-                            valor: valor,
-                            valorKilo: valorKilo,
-                        });
-                        return [4 /*yield*/, productsrepository.save(product)];
+                        return [4 /*yield*/, diaryproductrepository.findByName(nome)];
                     case 2:
+                        findDiaryProduct = _b.sent();
+                        if (!findProduct) return [3 /*break*/, 6];
+                        return [4 /*yield*/, productsrepository.update({ id: id }, {
+                                imagem: imagem,
+                                nome: nome,
+                                descricao: descricao,
+                                venda: venda,
+                                valor: valor,
+                                valorKilo: valorKilo,
+                            })];
+                    case 3:
                         _b.sent();
-                        return [2 /*return*/, product];
+                        if (!findDiaryProduct) return [3 /*break*/, 5];
+                        return [4 /*yield*/, diaryproductrepository.update({ nome: nome }, {
+                                imagem: imagem,
+                                nome: nome,
+                                descricao: descricao,
+                                venda: venda,
+                                valor: valor,
+                                valorKilo: valorKilo,
+                            })];
+                    case 4:
+                        _b.sent();
+                        _b.label = 5;
+                    case 5: return [2 /*return*/, true];
+                    case 6: throw Error('Produto não existe');
                 }
             });
         });
     };
-    return CreateProductService;
+    return EditProductService;
 }());
-exports.default = CreateProductService;
+exports.default = EditProductService;

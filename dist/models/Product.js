@@ -14,31 +14,35 @@ var Product = /** @class */ (function () {
     function Product() {
     }
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
+        __metadata("design:type", String)
+    ], Product.prototype, "id", void 0);
+    __decorate([
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], Product.prototype, "imagem", void 0);
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        (0, typeorm_1.PrimaryColumn)(),
         __metadata("design:type", String)
     ], Product.prototype, "nome", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], Product.prototype, "descricao", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], Product.prototype, "venda", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", Number)
     ], Product.prototype, "valor", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", Number)
     ], Product.prototype, "valorKilo", void 0);
     Product = __decorate([
-        typeorm_1.Entity('products')
+        (0, typeorm_1.Entity)('products')
     ], Product);
     return Product;
 }());

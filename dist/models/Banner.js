@@ -14,15 +14,15 @@ var Banner = /** @class */ (function () {
     function Banner() {
     }
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        (0, typeorm_1.PrimaryColumn)(),
         __metadata("design:type", String)
     ], Banner.prototype, "imagem", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], Banner.prototype, "nome", void 0);
     Banner = __decorate([
-        typeorm_1.Entity('banner')
+        (0, typeorm_1.Entity)('banner')
     ], Banner);
     return Banner;
 }());

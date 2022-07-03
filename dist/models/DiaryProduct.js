@@ -14,31 +14,31 @@ var DiaryProduct = /** @class */ (function () {
     function DiaryProduct() {
     }
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], DiaryProduct.prototype, "imagem", void 0);
     __decorate([
-        typeorm_1.PrimaryColumn(),
+        (0, typeorm_1.PrimaryColumn)(),
         __metadata("design:type", String)
     ], DiaryProduct.prototype, "nome", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], DiaryProduct.prototype, "descricao", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", String)
     ], DiaryProduct.prototype, "venda", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", Number)
     ], DiaryProduct.prototype, "valor", void 0);
     __decorate([
-        typeorm_1.Column(),
+        (0, typeorm_1.Column)(),
         __metadata("design:type", Number)
     ], DiaryProduct.prototype, "valorKilo", void 0);
     DiaryProduct = __decorate([
-        typeorm_1.Entity('diaryproducts')
+        (0, typeorm_1.Entity)('diaryproducts')
     ], DiaryProduct);
     return DiaryProduct;
 }());
